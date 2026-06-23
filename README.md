@@ -1,26 +1,54 @@
 # GDPS Spammer
-## Geometry Dash Private Server Spammer Accounts
-**Директория:**
+
+> Инструмент для спама аккаунтами на приватных серверах Geometry Dash (GDPS).
+
+## Дисклеймер
+
+Проект предназначен **исключительно для образовательных целей** - демонстрация уязвимости открытого API регистрации на GDPS-хостингах (изначально на FruitSpace).
+
+Автор **не призывает** использовать этот инструмент для атак на реальные серверы. Все действия вы совершаете на свой страх и риск.
+
+---
+
+## Структура
+
 ```
-📁 [ROOT]
-|__ 📁 main.py | Основной скрипт для спама
+[ROOT]
+└── main.py               
 ```
 
-## Докуменгтация
-В начале вас приветствует и спрашива.т готовы пользоваться функциями, вы пишите Yes (y)
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148684564424835173/image.png?width=1325&height=662)
-Потом появляется менюшка 1 - Начать спам гдпс 2 - проверить данные созданных акков логин пароль 3 - соц сети
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148684614538375298/image.png?width=1440&height=470)
-Дальше вы выбираете какой вам нужен тип спама по ид фруит спэйса или ссылки
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148684662995157083/image.png?width=1440&height=406)
-Если вы выбрали по ид фруит спэйса, то вот пример ид фруитспэйса. 01PI
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148684742464651305/image.png?width=1440&height=278)
-Если вы выбрали 2 вариант то, вам нужна ссылка с хостингом. Например: https://gofruit.space/gdps/01PI/db/
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148684812916363305/image.png?width=1440&height=370)
-Так же вы можете посмотреть Логин и Пароль если вы захотите зайти на акк
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148684917199347782/image.png?width=345&height=75)
-Так же бесполезное Соц Сети
-![alt text](https://media.discordapp.net/attachments/1148664308465676321/1148685039098404874/image.png?width=1440&height=316)
-Данный скрипт был создан, чтобы показать владельцу **FruitSpace** на дырки своего хостинга
-![alt text](https://media.discordapp.net/attachments/1147277143924027483/1148672749154349096/image.png?width=1440&height=595)
-Я НЕ ПРИЗЫВАЮ ВАС СПАМИТЬ ПРИВАТНЫЕ СЕРВЕРА, ВСЕ ВАШИ ДЕЙСТВИЯ ВЫ ДЕЛАЕТЕ НА СВОЙ СТРАХ И РИСК.
+## Требования
+
+- Python 3.8+
+- `aiohttp`
+- `requests`
+
+## Установка
+
+```bash
+git clone https://github.com/nyxxaro/gdps_spam.git
+cd gdps_spam
+pip install aiohttp requests
+```
+
+## Запуск
+
+```bash
+python main.py
+```
+
+## Как это работает
+
+Для каждой регистрации скрипт отправляет `POST` на `accounts/registerGJAccount.php` целевого сервера со следующими данными:
+
+| Поле | Значение |
+|------|----------|
+| `userName` | случайное число `1` — `9 999 999` |
+| `password` | `123456` |
+| `email` | `<случайное_число>m@gmail.com` |
+| `secret` | `Wmfv3899gc9` |
+
+
+## 📄 Лицензия
+
+![License](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
